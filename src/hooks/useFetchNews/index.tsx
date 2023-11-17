@@ -3,8 +3,6 @@ import { ActionType, StatePropsType } from '@/types'
 import axios from 'axios'
 import { useCallback, useEffect, useReducer, useState } from 'react'
 
-console.log(process.env.NEXT_PUBLIC_NEWS_API_URL)
-
 const urlDomainNews: URL = new URL(process.env.NEXT_PUBLIC_NEWS_API_URL as string);
 urlDomainNews.searchParams.append('language', 'pt')
 urlDomainNews.searchParams.append('sortBy', 'popularity')

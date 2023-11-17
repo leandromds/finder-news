@@ -2,7 +2,7 @@
 const NextFederationPlugin = require('@module-federation/nextjs-mf')
 
 const remotes = ( isServer ) => ({
-  finderNewsComponents: `finderNewsComponents@${process.env.REMOTE_URL}${ isServer ? 'ssr' : 'chunks' }/remoteEntry.js`,
+  finderNewsComponents: `finderNewsComponents@${process.env.REMOTE_URL}/_next/static/${ isServer ? 'ssr' : 'chunks' }/remoteEntry.js`,
 })
 
 const nextConfig = {
