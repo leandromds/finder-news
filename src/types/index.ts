@@ -19,7 +19,8 @@ export interface IData {
 }
 
 export interface Article {
-  id?: string,
+  articleId: string
+  id?: string
   source: Source
   author: string
   title: string

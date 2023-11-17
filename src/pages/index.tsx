@@ -8,10 +8,6 @@ import { Article } from '@/types'
 
 const Header = dynamic(() => import('finderNewsComponents/header'))
 
-const urlDomainNews = new URL('https://newsapi.org/v2/everything')
-urlDomainNews.searchParams.append('language', 'pt')
-urlDomainNews.searchParams.append('sortBy', 'popularity')
-
 export default function Home() {
   const [searchInput, setSearchInput] = useState<string>('')
 
