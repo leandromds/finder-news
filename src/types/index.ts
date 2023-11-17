@@ -9,8 +9,8 @@ export type StatePropsType = {
 
 export type ActionType = 
   | { type: 'loading' }
-  | { type: 'fetched' payload: Article[] }
-  | { type: 'error' payload: Error }
+  | { type: 'fetched', payload: Article[] }
+  | { type: 'error', payload: Error };
 
 export interface IData {
   status: string
