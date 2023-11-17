@@ -3,9 +3,9 @@ import { ActionType, StatePropsType } from '@/types'
 import axios from 'axios'
 import { useCallback, useEffect, useReducer, useState } from 'react'
 
-const apiKey = '268d271c4a1045e5b5f3a3a93af3bb32'
+console.log(process.env.NEXT_PUBLIC_NEWS_API_URL)
 
-const urlDomainNews = new URL('https://newsapi.org/v2/everything')
+const urlDomainNews: URL = new URL(process.env.NEXT_PUBLIC_NEWS_API_URL as string);
 urlDomainNews.searchParams.append('language', 'pt')
 urlDomainNews.searchParams.append('sortBy', 'popularity')
 
@@ -50,7 +50,7 @@ export default function useFetchNews() :StatePropsType {
         urlDomainNews.toString(),
         {
           headers: {
-            authorization: `Bearer ${apiKey}`
+            authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_API_KEY}`
           }
         }
       )

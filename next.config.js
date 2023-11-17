@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const NextFederationPlugin = require('@module-federation/nextjs-mf')
 
-const remotes = ( isServer,) => ({
-  finderNewsComponents: `finderNewsComponents@http://localhost:3001/_next/static/${ isServer ? 'ssr' : 'chunks' }/remoteEntry.js`,
+const remotes = ( isServer ) => ({
+  finderNewsComponents: `finderNewsComponents@${process.env.REMOTE_URL}${ isServer ? 'ssr' : 'chunks' }/remoteEntry.js`,
 })
 
 const nextConfig = {
@@ -25,7 +25,7 @@ const nextConfig = {
       new NextFederationPlugin({
         name: 'finderNews',
         filename: 'static/chunks/remoteEntry.js',
-        remotes: remotes('finderNewsComponents', 3001, isServer),
+        remotes: remotes('finderNewsComponents', isServer),
         shared: {},
       }),
     )
