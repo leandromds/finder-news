@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 export function middleware() {
   const isBrowser = typeof window !== 'undefined';
@@ -22,3 +22,4 @@ export function middleware() {
 export const config = {
   matcher: '/api/:path*'
 };
+ 
