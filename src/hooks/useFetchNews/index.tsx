@@ -1,11 +1,6 @@
-import { createArticleId, filterArticles } from '@/helpers'
 import { ActionType, StatePropsType } from '@/types'
 import axios from 'axios'
 import { useCallback, useEffect, useReducer, useState } from 'react'
-
-const urlDomainNews: URL = new URL(process.env.NEXT_PUBLIC_NEWS_API_URL as string);
-urlDomainNews.searchParams.append('language', 'pt')
-urlDomainNews.searchParams.append('sortBy', 'popularity')
 
 function reducer(state: StatePropsType, action: ActionType) {
   switch (action.type) {
@@ -43,22 +38,8 @@ export default function useFetchNews() :StatePropsType {
   const handleFetch = useCallback(async () => {
     dispatch({ type: 'loading' })
     try {
-      urlDomainNews.searchParams.append('q', termToSearch)
-      const response = await axios.get(
-        urlDomainNews.toString(),
-        {
-          headers: {
-            authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_API_KEY}`
-          }
-        }
-      )
-
-      urlDomainNews.searchParams.delete('q')
-
-      const articles = createArticleId(
-        filterArticles(response.data.articles)
-      )
-
+      const response = await axios.get(`api/news/${termToSearch}`)
+      const articles = response.data.result
       dispatch({ type: 'fetched', payload: articles })
     } catch (error) {
       if (axios.isAxiosError(error) || error instanceof Error) {
