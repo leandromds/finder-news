@@ -1,5 +1,5 @@
-import Image from "next/image"
 import { convertISODateToShortDate } from "@/utils"
+import Image from "next/image"
 
 export interface CardProps {
   source: Source
@@ -28,12 +28,12 @@ const ArticleCard = ({
   content,
 } : CardProps) => {
   return (
-    <article className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mb-[3rem]">
-      <div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
+    <article className="relative flex max-md:flex-wrap w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mb-[3rem]">
+      <div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white lg:rounded-l-lg shrink-0 bg-clip-border max-md:w-full max-md:h-full">
         <Image
           src={image}
           alt="image"
-          className="object-cover w-full h-full"
+          className="w-full h-full object-cover rounded-r-none"
           width={507}
           height={547}
         />
